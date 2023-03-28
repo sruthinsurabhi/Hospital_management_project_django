@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title%}Confirmation{%endblock%}
+{%block content%}
+{%load static%}
+<div class="alert alert-primary" role="alert">
+    
+  <p>  Dear {{form_name}},
+
+Thank you for booking an appointment at city Hospital. Your appointment has been confirmed . Please arrive at the hospital at least 15 minutes before your scheduled appointment time.
+
+If you need to reschedule your appointment, please contact us as soon as possible at 1234456 or reply to this email cityhos@gmail.c.
+
+We look forward to seeing you soon.
+
+Best regards,
+
+City Hospital
+</p>
+
+  </div>
+{%endblock%}
+  

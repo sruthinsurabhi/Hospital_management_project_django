@@ -1,26 +1,42 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from.models import departments, doctors
+from .forms import BookingForm
 
 # Create your views here.
 def index(request):
-    person=[{'name':'Jack',
-             'age':55,
-             'place':"Caribean"},{'name':'Sparrow',
-             'age':25,
-             'place':"Caribean"},{'name':'gibbs',
-             'age':65,
-             'place':"gulf"}]
-    context = {'person': person}
-    return render(request,'index.html',context)
+  
+    return render(request,'index.html')
 
 def about(request):
     return render(request,'about.html')
 def booking(request):
-    return render(request,'booking.html')
-def doctors(request):
-    return render(request,'doctors.html')
+    if request.method =="POST":
+        
+        form=BookingForm(request.POST)
+        if form.is_valid():
+            form.save()
+            dict_form={'form':form,
+                       }
+            return render(request,'confirmation.html',dict_form)
+        
+    form=BookingForm()
+    dict_form={'form':form,}
+    return render(request,'booking.html',dict_form)
+
+def doctor(request):
+    dict_doc = {
+        'doct':doctors.objects.all()
+        }
+
+    return render(request,'doctors.html',dict_doc)
+
 def contact(request):
     return render(request,'contact.html')
+   
+
 def department(request):
-    return render(request,'department.html')
+    dict_dept={'Dept':departments.objects.all()}
+
+    return render(request,'department.html',dict_dept)
 

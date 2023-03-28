@@ -2,5 +2,34 @@
         {% block title%}department{%endblock%}%
     
     {%block content%}
-        <h1>Department pageE</h1>
+    {%load static%}
+        <h1 class="text-center">Our Departments</h1>
+        <div class="container " style="margin-top: 20px;">
+        {% for d in Dept %}
+
+            <!-- <div class="row",style="display:inline-block"> -->
+              <!-- <div class="col-sm-4"> -->
+                
+            <div class="card text-center card mb-3 card mx-3  " style="width: 18rem; display: inline-block;border-radius: 10px;margin-top: 3px; margin-left: 5px;">
+              
+               <img  class="card-img-top w-100"src="{{d.img.url}}" alt="Card image cap">
+               <div class="mask flex-center">
+                <p class="white-text">{{d.dept_name}}</p>
+            </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{d.dept_name}}</h5>
+                  <p class="card-text">{{d.dept_descriptions|truncatechars:150}}</p>
+                </div>
+               
+                <div class="card-body">
+                  <a href="#" class="card-link">Moredetails</a>
+                 
+                </div>
+              </div>
+              <!-- </div> -->
+              <!-- </div> -->
+              
+        
+        {% endfor %}
+    </div>
     {%endblock%} 

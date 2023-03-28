@@ -2,5 +2,22 @@
         {% block title%}Doctors{%endblock%}%
     
     {%block content%}
-        <h1>Doctors pageE</h1>
+    {%load static%}
+        <h1 class="text-center">Our Special Doctors</h1>
+        <div class="container ">
+        <div class="row mb-3">
+            {% for d in doct %}
+            <div class="card mb-3 card mx-3 bg-light" style="width: 18rem; display: inline-block;border-radius: 10px;">
+                <img class="card-img-top" style="width:215;height: 270;" src="{{d.doc_img.url}}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title text-center">{{d.doc_name}}</h5>
+                  <p class="card-text text-center">{{d.doc_spec}}</p>
+                  <p class="text-center">Department : {{d.dept_name}}</p>
+                </div>
+              </div>
+              {%endfor %}
+        </div>
+        </div>
     {%endblock%} 
+  
+    
